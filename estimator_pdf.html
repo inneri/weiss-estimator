@@ -1,0 +1,71 @@
+<apex:page controller="EstimatorController" showHeader="false" sidebar="false" renderAs="PDF" >
+<apex:stylesheet value="{!$Resource.EstimatorCSS}"/>
+    <div id="container">
+        <div id="header">
+            <div id="address">
+            <img src="{!$Resource.WeissLogo}" alt="weiss_logo_small" width="129" height="56" />
+            <p>360 San Miguel Drive, Suite 403, Newport Beach, CA 92660<br/>T: 949-720-1400 f: 949-720-1457<br/>www.drweiss.com</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div id="body">
+            <h1>Estimate of Cosmetic Surgical Charges</h1>
+            <table width="100%">
+                <tr>
+                    <td><p>Patients Name:  <strong>{!patientName}</strong></p></td>
+                    <td><p>Date: <strong>{!todayDate}</strong></p></td>
+                </tr>
+            </table>
+           <apex:dataTable value="{!productList}" var="product" styleClass="procedureTable" cellpadding="5px">
+               <apex:column headerValue="Procedures" value="{!product.Name}" styleClass="borderBottom tableRowSpace" width="61.26%" />
+               <apex:column headerValue="Estimated Fee(s)" value="{!product.PriceBookEntries[0].UnitPrice}" styleClass="borderBottom tableRowSpace" width="38.74%"/>
+           </apex:dataTable>
+           <apex:dataTable value="{!inputProcedures}" var="i" styleClass="procedureTable" cellpadding="5px">
+               <apex:column headerValue="Other Procedures/Notes" value="{!i}" styleClass="borderBottom tableRowSpace" width="61.26%"/>
+               <apex:column headerValue="Estimated Fee(s)" value="{!inputProcedures[i]}" styleClass="borderBottom tableRowSpace" width="38.74%"/>
+           </apex:dataTable>
+           <div id="moneyRe">
+               <h2>Total Financial Responsibility</h2>
+               <p>(Pre-Operative Laboratory Panel Not Included In This Quote)</p>
+               <div id="totalPrice">
+                   <strong><apex:outputText value="{0, Number, $##,##0.00}"><apex:param value="{!totalPrice}"/></apex:outputText></strong>
+                   
+               </div>
+           </div>
+           <div id="dep">
+                <h3>DEPOSIT</h3>
+                 <p>(Due at time of scheduling)  The deposit is non-refundable or transferable unless a procedure is cancelled or rescheduled at least two weeks in advance.</p>
+           </div>
+           <div id="amtDep"><p>Amount:     <strong><span style="font-size: 14px;">$500</span></strong></p></div>
+           <div class="clear"></div>
+           <div id="bal"><h3>BALANCE</h3><p>(Due in full on pre-operative visit)  This balance is non-refundable or transferable unless a procedure is cancelled or rescheduled at least two weeks in advance. In case of family emergency or illness, surgery can be rescheduled without loss of payment.</p>              
+           </div>  
+            <div id="amtBal"><p>Amount:</p></div>
+           <!-- End Deposit and Balance Section -->
+           <div class="clear"></div>
+           <div id="feesInc">
+               <h3>Fees Include:</h3>
+               <p>Surgeons Fee.  Operating Room usage.  Surgical Supplies.  Local Anesthesia.  Pre-Operative History and Physical.  Routine Post-Operative Visits</p>
+               
+           </div>
+           <div id="feesNoInc">
+               <h3>Fees DO NOT Include:</h3>
+               <p>Additional costs that my be incurred from complications, revisions, possible emergency care provided by another physician, or other medical problems that may arise from this surgery.  These additional costs and the costs of other studies (lab work, EKG, chest x-ray, pathology, etc.) that may be needed are <strong>not included</strong> in the global fee quoted above.</p>
+               <p>The fees for your proposed surgery are based on a private payment basis for cosmetic surgery and will not be submitted to your insurance company.</p>
+           </div>
+           <div id="revisionDiv">
+                <h3>REVISION POLICY</h3>
+               <p>Plastic and reconstructive surgery is not an exact science and occasionally, surgical revisions or enhancements are required to obtain the best surgical results.  In some cases, the surgeons fee may be reduced or waived, but <strong>an operating room and supply fee of $500 will always apply.</strong></p>
+           </div>
+           <div id="paymentDiv">
+                <h3>METHODS OF PAYMENTS</h3>
+               <p>Fees are to be paid in full prior to surgery.  This payment can be in the form of a check, cash, or money order.  We accept MasterCard, Visa, and American Express.  <strong>Financing is available as low as $25 per $1000 financed</strong>.  This quote is valid for six months.</p>
+           </div>
+           <div class="clear"></div>
+           <div id="signatureDiv">
+               <p><strong>Patients Signature</strong> (Signifies only that you have received this estimate):  _________________________________________</p>
+           </div>
+        </div>
+        <!-- End body div -->
+    </div>
+</apex:page>

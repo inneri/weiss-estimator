@@ -1,0 +1,54 @@
+<apex:page controller="EstimatorController" sidebar="false" docType="html-5.0"  >
+    <apex:pageBlock >
+        <h1>Weiss Cosmetic Surgical Estimator</h1>
+        <apex:form >
+            <apex:input value="{!patientName}" type="text" html-placeholder="Patient Name"/>
+            <br />
+            <p>Select Your Procedure:</p>
+            <apex:selectList size="1" id="proc0" value="{!productId}" style="margin-right:30px;"  >
+                <apex:selectOptions value="{!products}" />
+                <apex:actionSupport event="onchange" id="changeAction" reRender="procZeroOutput" action="{!findProduct}" />
+            </apex:selectList>
+            <apex:outputPanel id="procZeroOutput">
+                <strong><span style="font-size:25px;"><apex:outputField value="{!mySelectedProduct.PricebookEntries[0].UnitPrice}" /></span></strong>
+            </apex:outputPanel>
+            <br />
+            <br />
+            <apex:commandButton value="Add Procedure" action="{!addProduct}" reRender="procList"/>
+            <br />
+            <br />
+            <p>Or add in a procedure or comment of your own:</p>
+            <apex:inputText value="{!procBox}" html-placeholder="Procedure or Note"/>
+            <apex:inputText value="{!amtBox}" html-placeholder="Amount" />
+            <apex:commandButton action="{!addTypedInfo}" value="Add Typed Procedure" reRender="procList"/>
+            <br />
+            <br /> 
+        </apex:form>
+        <br />
+        <br />
+        <h2>Standard Procedures</h2>
+        <apex:outputPanel id="procList">
+            <apex:pageBlockTable value="{!productList}" var="product">
+                <apex:column headerValue="Selected Procedures" value="{!product.Name}"/>
+                <apex:column headerValue="Estimated Fee(s)" value="{!product.PricebookEntries[0].UnitPrice}" />
+                <apex:column ><apex:form ><apex:inputCheckbox value="{!product.Id}" /></apex:form></apex:column>
+            </apex:pageBlockTable>
+        
+            <br />
+            <br />
+            <h2>Other Procedures</h2>
+            <apex:pageBlockTable value="{!inputProcedures}" var="ip">
+                <apex:column headerValue="Other Procedures/Notes" value="{!ip}"/>
+                <apex:column headerValue="Estimated Fee(s)" value="{!inputProcedures[ip]}" />
+        </apex:pageBlockTable> <!-- End of Procedure List Output Table (procList) -->
+        </apex:outputPanel>
+        <br />
+        <apex:form >
+            <apex:commandButton action="{!calculateTotal}" value="Total" id="calcBtn" reRender="finalCalc"/>
+            <apex:commandButton action="{!createEstimatePDF}" value="Print Estimate"/>
+        </apex:form>   
+        <apex:outputPanel id="finalCalc">
+                <p>Final Total:</p>{!totalPrice}
+            </apex:outputPanel>      
+    </apex:pageBlock>
+</apex:page>
