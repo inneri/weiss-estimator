@@ -1,0 +1,144 @@
+/*-----------------Main Styles -----------------*/
+
+p, h1, h2, h3, h4 {
+	font-family: Helvetica, Arial;
+	font-size: 12px;
+}
+
+/*_____________________________________________*/
+
+/*
+#container {
+	width: 900px;
+	margin: 0 auto;
+}
+*/
+
+#header {
+	background-color: #1d3e95;
+	color: white;
+	position: relative;
+}
+
+#header img {
+	float: left;
+	margin-right: 200px;
+}
+
+#header #address {
+	margin-left: 40px;
+	padding: 5px 10px;
+}
+
+#body .procedureTable {
+	width: 100%;
+	border-bottom: 1px;
+	font-size: 12px;
+
+}
+
+/*
+#body .procedureTable tr {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+*/
+
+#body .borderBottom {
+	border-bottom: 1pt solid black;
+	margin-bottom: 5px;
+}
+
+#body tr.tableRowSpace td {
+	padding-bottom: 10px;
+}
+
+#body h1 {
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+#body p {
+	margin: .5em;
+}
+
+/*
+#body h3 {
+	font-weight: lighter;
+}
+*/
+
+#body table {
+	margin: 5px auto 10px auto;
+}
+
+#body #dep, #bal{
+	width: 48%;
+	float: left;
+	margin-left: 40px;
+}
+
+#body #amtDep, #amtBal {
+	width: 38%;
+	float: right;
+	margin-top: 0px;
+	margin-left: 10px;
+}
+
+#body #feesInc {
+	border: 1pt solid #1d3e95;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+#body #feesNoInc {
+	border: 1pt solid #2d5fe0;
+	padding: 5px;
+}
+
+#body #moneyRe {
+	background-color: #b0bbc9;
+	padding:  5px 5px 5px 40px;
+	position: relative;
+}
+
+#body #moneyRe > #totalPrice {
+	float: right;
+	position: absolute;
+	top:20px;
+	right:188px;
+}
+
+#body #paymentDiv, #revisionDiv {
+	float:left;
+	width: 45%;
+	margin: 10px 10px;
+}
+
+/*
+#body #revisionDiv {
+	float:right;
+	width: 50%;
+	margin: 10px 10px;
+}
+*/
+
+#body #paymentDiv, #revisionDiv > h3 {
+	text-align: center;
+}
+
+.clear {
+	clear: both;
+}
+
+#footer {
+	margin: 0 auto;
+}
+
+/* -----------------PDF Page Settings --------------------*/
+
+@page {
+	margin-top:15px;
+}
