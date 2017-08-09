@@ -1,5 +1,6 @@
 <apex:page controller="EstimatorController" showHeader="false" sidebar="false" renderAs="PDF" >
 <apex:stylesheet value="{!$Resource.EstimatorCSS}"/>
+<link rel="stylesheet" href="EstimatorCSS.css" type="text/css">
     <div id="container">
         <div id="header">
             <div id="address">
@@ -29,7 +30,7 @@
                <p>(Pre-Operative Laboratory Panel Not Included In This Quote)</p>
                <div id="totalPrice">
                    <strong><apex:outputText value="{0, Number, $##,##0.00}"><apex:param value="{!totalPrice}"/></apex:outputText></strong>
-                   
+
                </div>
            </div>
            <div id="dep">
@@ -38,15 +39,15 @@
            </div>
            <div id="amtDep"><p>Amount:     <strong><span style="font-size: 14px;">$500</span></strong></p></div>
            <div class="clear"></div>
-           <div id="bal"><h3>BALANCE</h3><p>(Due in full on pre-operative visit)  This balance is non-refundable or transferable unless a procedure is cancelled or rescheduled at least two weeks in advance. In case of family emergency or illness, surgery can be rescheduled without loss of payment.</p>              
-           </div>  
+           <div id="bal"><h3>BALANCE</h3><p>(Due in full on pre-operative visit)  This balance is non-refundable or transferable unless a procedure is cancelled or rescheduled at least two weeks in advance. In case of family emergency or illness, surgery can be rescheduled without loss of payment.</p>
+           </div>
             <div id="amtBal"><p>Amount:</p></div>
            <!-- End Deposit and Balance Section -->
            <div class="clear"></div>
            <div id="feesInc">
                <h3>Fees Include:</h3>
                <p>Surgeons Fee.  Operating Room usage.  Surgical Supplies.  Local Anesthesia.  Pre-Operative History and Physical.  Routine Post-Operative Visits</p>
-               
+
            </div>
            <div id="feesNoInc">
                <h3>Fees DO NOT Include:</h3>
