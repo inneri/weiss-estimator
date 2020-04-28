@@ -22,8 +22,8 @@
                <apex:column headerValue="Estimated Fee(s)" value="{!product.PriceBookEntries[0].UnitPrice}" styleClass="borderBottom tableRowSpace" width="38.74%"/>
            </apex:dataTable>
            <apex:dataTable value="{!inputProcedures}" var="i" styleClass="procedureTable" cellpadding="5px">
-               <apex:column headerValue="Other Procedures/Notes" value="{!i}" styleClass="borderBottom tableRowSpace" width="61.26%"/>
-               <apex:column headerValue="Estimated Fee(s)" value="{!inputProcedures[i]}" styleClass="borderBottom tableRowSpace" width="38.74%"/>
+               <apex:column value="{!i}" styleClass="borderBottom tableRowSpace" width="61.26%"/>
+               <apex:column value="{!inputProcedures[i]}" styleClass="borderBottom tableRowSpace" width="38.74%"/>
            </apex:dataTable>
            <div id="moneyRe">
                <h2>Total Financial Responsibility</h2>
